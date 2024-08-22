@@ -1,0 +1,194 @@
+﻿
+#history .nav-tabs{
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}
+#history .nav-tabs>li>a{
+	color: #444444;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	-webkit-border-radius:0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 900;
+	padding-top: 15px;
+	padding-bottom: 15px;
+	}
+#history .nav-tabs>li.active>a, #history .nav-tabs>li.active>a:focus, #history .nav-tabs>li.active>a:hover{
+	background-color: #66c0c2;
+	color: #FFF;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+	-webkit-border-radius:0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	text-transform: uppercase;
+	font-size: 12px;
+	font-weight: 900;
+	}
+#history .search-form{
+	margin: 0px;
+	border: none;
+	outline: 0;
+	position: relative;
+	font-family: 'Roboto', sans-serif;
+	font-size: 12px;
+	color: #adadb0;
+	font-weight: 400;
+	padding-top: 0px;
+	padding-right: 0px;
+	padding-bottom: 0px;
+	padding-left: 0px;
+}
+#history .search-form fieldset{
+	margin: 0px;
+	padding-top: 5px;
+	padding-right: 15px;
+	padding-bottom: 5px;
+	padding-left: 5px;
+	color: #999;
+ }
+#history .search-form input {
+	display: block;
+	width: 100%;
+	color: #999  !important;
+	border: 1px solid #EFEFEF;
+	font-size: 14px;
+	outline: 0;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	padding-top: 10px;
+	padding-right: 20px;
+	padding-bottom: 10px;
+	padding-left: 20px;
+	background-color: #ffffff;
+	margin: 0px;
+}
+#history .search-form input[type="submit"] {
+	background-repeat: no-repeat;
+	background-position: center center;
+	position: absolute;
+	display: block;
+	font-size: 0px;
+	margin: auto;
+	overflow: hidden;
+	border: none !important;
+	top: 5px;
+	-webkit-border-radius: 0px;
+	-moz-border-radius: 0px;
+	border-radius: 0px;
+	width: 35px;
+	right: 5px;
+	background-image: url(../img/search-icon-2.png);
+	height: 35px;
+	background-color: #fab318;
+	padding: 0px;
+}
+
+#main-page{}
+#main-page .main-header{
+	background-color: #444;
+	text-align: center;
+	padding-top: 150px;
+	padding-bottom: 150px;
+	background-attachment: fixed;
+	background-image: url(../demo_img/main.jpg);
+}
+#main-page .main-header h1{
+	font-family: Raleway;
+	font-weight: 700;
+	color: #F8F8F8;
+	text-transform: capitalize;
+	margin-top: 50px;
+	margin-bottom: 50px;
+	font-size: 22px;
+	line-height: 46px;
+}
+#main-page .main-header .wasf{
+	max-width:600px;
+	margin-right: auto;
+	margin-left: auto;
+	color: #E6E6E6;
+	}	
+#main-page .main-header .btn{
+	margin-top: 50px;
+	background-color: #ff5e3a;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}	
+
+#main-page  #theme-page{
+	background-color: #eee;
+	padding-top: 70px;
+	padding-bottom: 70px;
+	text-align: center;
+}
+#main-page  #theme-page .btn-buy{
+	margin-top: 50px;
+	background-color: #ff5e3a;
+	border-top-style: none;
+	border-right-style: none;
+	border-bottom-style: none;
+	border-left-style: none;
+}	
+#main-page  #theme-page h3{
+	margin-top: 20px;
+	margin-bottom: 60px;
+	text-transform: capitalize;
+}
+.page-item{
+	margin-bottom: 30px;
+}
+.page-item .page-item-thumb{
+	position: relative;
+	box-shadow: 0 0 34px 0 rgba(63, 66, 87, 0.3);
+	margin-bottom: 25px;
+}
+.page-item:hover a.btn-breez{
+	display:block !important}
+.page-item:hover a.full-block{
+	display:block !important}
+.page-item .page-item-thumb a.full-block{
+	display:none;
+	z-index: 3;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	top: 0px;
+	right: 0px;
+	background:	rgba(0,0,0,0.7) ;
+}
+.page-item .page-item-thumb a.btn-breez{
+	display:none;
+	position: absolute;
+	top: 80px;
+	right: 0%;
+	color: #FFF;
+	background-color: #fab318;
+	text-align: center;
+	margin-right: auto;
+	margin-left: auto;
+	left: 0px;
+	height: 30px;
+	width: 100px;
+	z-index: 5;
+}
+.page-item  .title{
+	font-size: 12px;
+	font-weight: 900;
+	text-transform: uppercase;
+	padding-top: 8px;
+	padding-bottom: 8px;
+}
+

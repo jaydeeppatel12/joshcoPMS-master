@@ -1,0 +1,724 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tpn.co.za/" xmlns:s1="http://microsoft.com/wsdl/types/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tpn.co.za/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tpn.co.za/">
+      <s:import namespace="http://microsoft.com/wsdl/types/" />
+      <s:element name="ConsumerEnquiry">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="ModuleList" type="tns:ArrayOfString" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConsumerBlock" type="tns:ConsumerInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnquiryBlock" type="tns:EnquiryInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutputFormat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SessionId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="ConsumerInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="NationalID" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="RSAid" type="tns:YesNo" />
+          <s:element minOccurs="1" maxOccurs="1" name="DateOfBirth" nillable="true" type="s:dateTime" />
+          <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="CurrentAddress" type="tns:AddressInfo" />
+          <s:element minOccurs="1" maxOccurs="1" name="EnquiryReason" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="CellNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="WorkNumber" type="tns:PhoneNumber" />
+          <s:element minOccurs="0" maxOccurs="1" name="Occupation" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Employer" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="CredexDetails" type="tns:CredexInfo" />
+          <s:element minOccurs="0" maxOccurs="1" name="BankCodeDetails" type="tns:BankInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="YesNo">
+        <s:restriction base="s:string">
+          <s:enumeration value="Yes" />
+          <s:enumeration value="No" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="AddressInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="Line1" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Suburb" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="City" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="Province" type="tns:Province" />
+          <s:element minOccurs="0" maxOccurs="1" name="PostalCode" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:simpleType name="Province">
+        <s:restriction base="s:string">
+          <s:enumeration value="EasternCape" />
+          <s:enumeration value="FreeState" />
+          <s:enumeration value="Gauteng" />
+          <s:enumeration value="KwazuluNatal" />
+          <s:enumeration value="Mpumalanga" />
+          <s:enumeration value="NorthernCape" />
+          <s:enumeration value="Limpopo" />
+          <s:enumeration value="NorthWest" />
+          <s:enumeration value="WesternCape" />
+        </s:restriction>
+      </s:simpleType>
+      <s:complexType name="PhoneNumber">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Code" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Number" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CredexInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ScoreVersion" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="NetIncome" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="TotalInstallment" nillable="true" type="s:decimal" />
+          <s:element minOccurs="1" maxOccurs="1" name="Contributors" nillable="true" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="InstallmentPortion" nillable="true" type="s:decimal" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="BankInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="AccountNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bank" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Branch" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="BranchCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountHolder" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AccountType" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SpecialInstructions" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="CreditAmount" nillable="true" type="s:decimal" />
+          <s:element minOccurs="0" maxOccurs="1" name="Terms" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="EnquiryInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="ContactName" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="ContactNumber" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="EmailAddress" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ConsumerEnquiryResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsumerEnquiryResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsumerIDVerification">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="RsaIdNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsumerIDVerificationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsumerIDVerificationResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsumerIDVerificationXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="RsaIdNumber" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="FirstName" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="Surname" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsumerIDVerificationXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsumerIDVerificationXmlResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDVerifyPhoto">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="enquiryId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetIDVerifyPhotoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetIDVerifyPhotoResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCredexSummaryXml">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="enquiryId" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCredexSummaryXmlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCredexSummaryXmlResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConsumerModules">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="NationalID" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="RSAId" type="tns:YesNo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetConsumerModulesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetConsumerModulesResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanAccessCredex">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CanAccessCredexResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="CanAccessCredexResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCredexModuleList">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetCredexModuleListResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetCredexModuleListResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsumerTrace">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="ConsumerBlock" type="tns:ConsumerInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="EnquiryBlock" type="tns:EnquiryInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConsumerTraceResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConsumerTraceResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Ping">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="input" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PingResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="PingResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListEnquiryArchive">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ListEnquiryArchiveResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ListEnquiryArchiveResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArchiveReportUrl">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="1" maxOccurs="1" name="enquiryGuid" type="s1:guid" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetArchiveReportUrlResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetArchiveReportUrlResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://microsoft.com/wsdl/types/">
+      <s:simpleType name="guid">
+        <s:restriction base="s:string">
+          <s:pattern value="[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}" />
+        </s:restriction>
+      </s:simpleType>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ConsumerEnquirySoapIn">
+    <wsdl:part name="parameters" element="tns:ConsumerEnquiry" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerEnquirySoapOut">
+    <wsdl:part name="parameters" element="tns:ConsumerEnquiryResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerIDVerificationSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsumerIDVerification" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerIDVerificationSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsumerIDVerificationResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerIDVerificationXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsumerIDVerificationXml" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerIDVerificationXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsumerIDVerificationXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetIDVerifyPhotoSoapIn">
+    <wsdl:part name="parameters" element="tns:GetIDVerifyPhoto" />
+  </wsdl:message>
+  <wsdl:message name="GetIDVerifyPhotoSoapOut">
+    <wsdl:part name="parameters" element="tns:GetIDVerifyPhotoResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCredexSummaryXmlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCredexSummaryXml" />
+  </wsdl:message>
+  <wsdl:message name="GetCredexSummaryXmlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCredexSummaryXmlResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerModulesSoapIn">
+    <wsdl:part name="parameters" element="tns:GetConsumerModules" />
+  </wsdl:message>
+  <wsdl:message name="GetConsumerModulesSoapOut">
+    <wsdl:part name="parameters" element="tns:GetConsumerModulesResponse" />
+  </wsdl:message>
+  <wsdl:message name="CanAccessCredexSoapIn">
+    <wsdl:part name="parameters" element="tns:CanAccessCredex" />
+  </wsdl:message>
+  <wsdl:message name="CanAccessCredexSoapOut">
+    <wsdl:part name="parameters" element="tns:CanAccessCredexResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetCredexModuleListSoapIn">
+    <wsdl:part name="parameters" element="tns:GetCredexModuleList" />
+  </wsdl:message>
+  <wsdl:message name="GetCredexModuleListSoapOut">
+    <wsdl:part name="parameters" element="tns:GetCredexModuleListResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerTraceSoapIn">
+    <wsdl:part name="parameters" element="tns:ConsumerTrace" />
+  </wsdl:message>
+  <wsdl:message name="ConsumerTraceSoapOut">
+    <wsdl:part name="parameters" element="tns:ConsumerTraceResponse" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapIn">
+    <wsdl:part name="parameters" element="tns:Ping" />
+  </wsdl:message>
+  <wsdl:message name="PingSoapOut">
+    <wsdl:part name="parameters" element="tns:PingResponse" />
+  </wsdl:message>
+  <wsdl:message name="ListEnquiryArchiveSoapIn">
+    <wsdl:part name="parameters" element="tns:ListEnquiryArchive" />
+  </wsdl:message>
+  <wsdl:message name="ListEnquiryArchiveSoapOut">
+    <wsdl:part name="parameters" element="tns:ListEnquiryArchiveResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetArchiveReportUrlSoapIn">
+    <wsdl:part name="parameters" element="tns:GetArchiveReportUrl" />
+  </wsdl:message>
+  <wsdl:message name="GetArchiveReportUrlSoapOut">
+    <wsdl:part name="parameters" element="tns:GetArchiveReportUrlResponse" />
+  </wsdl:message>
+  <wsdl:portType name="ConsumerSoap">
+    <wsdl:operation name="ConsumerEnquiry">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Perform a credit check against a consumer, specifying dynamically which reports you would like to include in the credit check</wsdl:documentation>
+      <wsdl:input message="tns:ConsumerEnquirySoapIn" />
+      <wsdl:output message="tns:ConsumerEnquirySoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerIDVerification">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Perform an id verification enquiry against a consumer</wsdl:documentation>
+      <wsdl:input message="tns:ConsumerIDVerificationSoapIn" />
+      <wsdl:output message="tns:ConsumerIDVerificationSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerIDVerificationXml">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Perform an id verification enquiry against a consumer and return generic xml format</wsdl:documentation>
+      <wsdl:input message="tns:ConsumerIDVerificationXmlSoapIn" />
+      <wsdl:output message="tns:ConsumerIDVerificationXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetIDVerifyPhoto">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the ID Verification photo on this consumer</wsdl:documentation>
+      <wsdl:input message="tns:GetIDVerifyPhotoSoapIn" />
+      <wsdl:output message="tns:GetIDVerifyPhotoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCredexSummaryXml">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the credex summary xml</wsdl:documentation>
+      <wsdl:input message="tns:GetCredexSummaryXmlSoapIn" />
+      <wsdl:output message="tns:GetCredexSummaryXmlSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerModules">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets a list of modules which are available for a consumer</wsdl:documentation>
+      <wsdl:input message="tns:GetConsumerModulesSoapIn" />
+      <wsdl:output message="tns:GetConsumerModulesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CanAccessCredex">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Check if the client has access to the credex modules</wsdl:documentation>
+      <wsdl:input message="tns:CanAccessCredexSoapIn" />
+      <wsdl:output message="tns:CanAccessCredexSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetCredexModuleList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Gets a list of credex modules which are available for a consumer</wsdl:documentation>
+      <wsdl:input message="tns:GetCredexModuleListSoapIn" />
+      <wsdl:output message="tns:GetCredexModuleListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerTrace">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Perform a trace enquiry against a consumer</wsdl:documentation>
+      <wsdl:input message="tns:ConsumerTraceSoapIn" />
+      <wsdl:output message="tns:ConsumerTraceSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <wsdl:input message="tns:PingSoapIn" />
+      <wsdl:output message="tns:PingSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ListEnquiryArchive">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List the results of previous enquiries performed against the system</wsdl:documentation>
+      <wsdl:input message="tns:ListEnquiryArchiveSoapIn" />
+      <wsdl:output message="tns:ListEnquiryArchiveSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetArchiveReportUrl">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">List the results of previous enquiries performed against the system</wsdl:documentation>
+      <wsdl:input message="tns:GetArchiveReportUrlSoapIn" />
+      <wsdl:output message="tns:GetArchiveReportUrlSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="ConsumerSoap" type="tns:ConsumerSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsumerEnquiry">
+      <soap:operation soapAction="http://tpn.co.za/ConsumerEnquiry" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerIDVerification">
+      <soap:operation soapAction="http://tpn.co.za/ConsumerIDVerification" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerIDVerificationXml">
+      <soap:operation soapAction="http://tpn.co.za/ConsumerIDVerificationXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDVerifyPhoto">
+      <soap:operation soapAction="http://tpn.co.za/GetIDVerifyPhoto" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCredexSummaryXml">
+      <soap:operation soapAction="http://tpn.co.za/GetCredexSummaryXml" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerModules">
+      <soap:operation soapAction="http://tpn.co.za/GetConsumerModules" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanAccessCredex">
+      <soap:operation soapAction="http://tpn.co.za/CanAccessCredex" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCredexModuleList">
+      <soap:operation soapAction="http://tpn.co.za/GetCredexModuleList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerTrace">
+      <soap:operation soapAction="http://tpn.co.za/ConsumerTrace" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap:operation soapAction="http://tpn.co.za/Ping" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListEnquiryArchive">
+      <soap:operation soapAction="http://tpn.co.za/ListEnquiryArchive" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArchiveReportUrl">
+      <soap:operation soapAction="http://tpn.co.za/GetArchiveReportUrl" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="ConsumerSoap12" type="tns:ConsumerSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="ConsumerEnquiry">
+      <soap12:operation soapAction="http://tpn.co.za/ConsumerEnquiry" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerIDVerification">
+      <soap12:operation soapAction="http://tpn.co.za/ConsumerIDVerification" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerIDVerificationXml">
+      <soap12:operation soapAction="http://tpn.co.za/ConsumerIDVerificationXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetIDVerifyPhoto">
+      <soap12:operation soapAction="http://tpn.co.za/GetIDVerifyPhoto" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCredexSummaryXml">
+      <soap12:operation soapAction="http://tpn.co.za/GetCredexSummaryXml" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetConsumerModules">
+      <soap12:operation soapAction="http://tpn.co.za/GetConsumerModules" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CanAccessCredex">
+      <soap12:operation soapAction="http://tpn.co.za/CanAccessCredex" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetCredexModuleList">
+      <soap12:operation soapAction="http://tpn.co.za/GetCredexModuleList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConsumerTrace">
+      <soap12:operation soapAction="http://tpn.co.za/ConsumerTrace" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Ping">
+      <soap12:operation soapAction="http://tpn.co.za/Ping" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ListEnquiryArchive">
+      <soap12:operation soapAction="http://tpn.co.za/ListEnquiryArchive" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetArchiveReportUrl">
+      <soap12:operation soapAction="http://tpn.co.za/GetArchiveReportUrl" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Consumer">
+    <wsdl:port name="ConsumerSoap" binding="tns:ConsumerSoap">
+      <soap:address location="https://test-webservices.tpn.co.za/Consumer.asmx" />
+    </wsdl:port>
+    <wsdl:port name="ConsumerSoap12" binding="tns:ConsumerSoap12">
+      <soap12:address location="https://test-webservices.tpn.co.za/Consumer.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

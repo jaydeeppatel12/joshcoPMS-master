@@ -1,0 +1,328 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tpn.co.za/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tpn.co.za/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tpn.co.za/">
+      <s:element name="Validate">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="SecurityInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="1" name="SecurityCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="AuthToken" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="OutputFormat" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="LoginCode" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="Password" type="s:string" />
+          <s:element minOccurs="0" maxOccurs="1" name="SessionId" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="ValidateResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ValidateResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateAuthToken">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GenerateAuthTokenResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GenerateAuthTokenResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgencyCode">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgencyCodeResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgencyCodeResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgentDetailsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentContactDetails">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="GetAgentContactDetailsResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="GetAgentContactDetailsResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecodeEncryptedString">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="SecurityBlock" type="tns:SecurityInfo" />
+            <s:element minOccurs="0" maxOccurs="1" name="encryptedString" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DecodeEncryptedStringResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="DecodeEncryptedStringResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="ValidateSoapIn">
+    <wsdl:part name="parameters" element="tns:Validate" />
+  </wsdl:message>
+  <wsdl:message name="ValidateSoapOut">
+    <wsdl:part name="parameters" element="tns:ValidateResponse" />
+  </wsdl:message>
+  <wsdl:message name="GenerateAuthTokenSoapIn">
+    <wsdl:part name="parameters" element="tns:GenerateAuthToken" />
+  </wsdl:message>
+  <wsdl:message name="GenerateAuthTokenSoapOut">
+    <wsdl:part name="parameters" element="tns:GenerateAuthTokenResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgencyCodeSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgencyCode" />
+  </wsdl:message>
+  <wsdl:message name="GetAgencyCodeSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgencyCodeResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgentDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgentDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentContactDetailsSoapIn">
+    <wsdl:part name="parameters" element="tns:GetAgentContactDetails" />
+  </wsdl:message>
+  <wsdl:message name="GetAgentContactDetailsSoapOut">
+    <wsdl:part name="parameters" element="tns:GetAgentContactDetailsResponse" />
+  </wsdl:message>
+  <wsdl:message name="DecodeEncryptedStringSoapIn">
+    <wsdl:part name="parameters" element="tns:DecodeEncryptedString" />
+  </wsdl:message>
+  <wsdl:message name="DecodeEncryptedStringSoapOut">
+    <wsdl:part name="parameters" element="tns:DecodeEncryptedStringResponse" />
+  </wsdl:message>
+  <wsdl:portType name="SecuritySoap">
+    <wsdl:operation name="Validate">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validate whether the security information provided is correct</wsdl:documentation>
+      <wsdl:input message="tns:ValidateSoapIn" />
+      <wsdl:output message="tns:ValidateSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GenerateAuthToken">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Validate whether the security information provided is correct and return an authentication token</wsdl:documentation>
+      <wsdl:input message="tns:GenerateAuthTokenSoapIn" />
+      <wsdl:output message="tns:GenerateAuthTokenSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgencyCode">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the agency code associated with some security information</wsdl:documentation>
+      <wsdl:input message="tns:GetAgencyCodeSoapIn" />
+      <wsdl:output message="tns:GetAgencyCodeSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the agency code associated with some security information</wsdl:documentation>
+      <wsdl:input message="tns:GetAgentDetailsSoapIn" />
+      <wsdl:output message="tns:GetAgentDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentContactDetails">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Get the agency contact information associated with some security information</wsdl:documentation>
+      <wsdl:input message="tns:GetAgentContactDetailsSoapIn" />
+      <wsdl:output message="tns:GetAgentContactDetailsSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DecodeEncryptedString">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Decode an encypted string for a specified client</wsdl:documentation>
+      <wsdl:input message="tns:DecodeEncryptedStringSoapIn" />
+      <wsdl:output message="tns:DecodeEncryptedStringSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="SecuritySoap" type="tns:SecuritySoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Validate">
+      <soap:operation soapAction="http://tpn.co.za/Validate" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateAuthToken">
+      <soap:operation soapAction="http://tpn.co.za/GenerateAuthToken" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgencyCode">
+      <soap:operation soapAction="http://tpn.co.za/GetAgencyCode" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentDetails">
+      <soap:operation soapAction="http://tpn.co.za/GetAgentDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentContactDetails">
+      <soap:operation soapAction="http://tpn.co.za/GetAgentContactDetails" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecodeEncryptedString">
+      <soap:operation soapAction="http://tpn.co.za/DecodeEncryptedString" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="SecuritySoap12" type="tns:SecuritySoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="Validate">
+      <soap12:operation soapAction="http://tpn.co.za/Validate" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GenerateAuthToken">
+      <soap12:operation soapAction="http://tpn.co.za/GenerateAuthToken" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgencyCode">
+      <soap12:operation soapAction="http://tpn.co.za/GetAgencyCode" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentDetails">
+      <soap12:operation soapAction="http://tpn.co.za/GetAgentDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAgentContactDetails">
+      <soap12:operation soapAction="http://tpn.co.za/GetAgentContactDetails" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DecodeEncryptedString">
+      <soap12:operation soapAction="http://tpn.co.za/DecodeEncryptedString" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="Security">
+    <wsdl:port name="SecuritySoap" binding="tns:SecuritySoap">
+      <soap:address location="https://test-webservices.tpn.co.za/security.asmx" />
+    </wsdl:port>
+    <wsdl:port name="SecuritySoap12" binding="tns:SecuritySoap12">
+      <soap12:address location="https://test-webservices.tpn.co.za/security.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

@@ -1,0 +1,108 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="../home.master.cs" Inherits="joshcoWA.home" %>
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head runat="server">
+    <title>joshco</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <meta charset="utf-8">
+    <%--<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">--%>
+
+      <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"/>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:300,400,500" rel="stylesheet"/>
+    <link rel="stylesheet" href="css/bootstrap.css"/>
+    <link rel="stylesheet" href="css/animate.css"/>
+    <link rel="stylesheet" href="css/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css"/>
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css"/>
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css"/>
+    <link rel="stylesheet" href="css/magnific-popup.css"/>
+
+    <link rel="stylesheet" href="css/style.css"/>
+</head>
+<body>
+    <header role="banner">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container">
+                <img height="60px" src="../images/logo_.jpg" />
+                <%--<a class="navbar-brand absolute" href="index.aspx" >joshco</a>--%>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse navbar-light" id="navbarsExample05">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="index.aspx">Home</a>
+                        </li>
+                          <li class="nav-item">
+                            <a class="nav-link" href="publicNotice.aspx">Notices</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="about.aspx">About</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="Properties.aspx">Properties</a>
+                        </li>
+                        <li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle" href="#" id="Tenders" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Tenders</a>
+<div class="dropdown-menu" aria-labelledby="Tenders">
+<a class="dropdown-item" href="appList.aspx">Applications </a>
+ <a class="dropdown-item" href="#">Request for Quotations</a> 
+  <a class="dropdown-item" href="#">Advertised Tenders</a> 
+   <a class="dropdown-item" href="#">Bids Received</a> 
+  <a class="dropdown-item" href="#">Public Adjudication</a> 
+    <a class="dropdown-item" href="#">Tenders Awarded</a> 
+     <a class="dropdown-item" href="#">Bids Tender Application Documents</a> 
+  <a class="dropdown-item" href="supplier/supplierAdd.aspx">Service Provider Registration Form</a> 
+    <a class="dropdown-item" href="#">Expression of Interest</a> 
+</div>
+</li>
+
+                         
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Contact</a>
+                        </li>
+                       
+                        <%--<li class="nav-item">
+                            <a href="login.aspx">Login</a> <%--/ <a href="applicant/appForm.aspx?a=a">Apply</a>--%>
+                       <%-- </li>--%>
+                    </ul>
+                    <ul class="navbar-nav">  
+                                               
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="Apply" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">End User Apply</a>
+                            <div class="dropdown-menu" aria-labelledby="Apply">
+                                <a class="dropdown-item" href="applicant/appForm.aspx?a=a">Residential</a>                                                   
+                            <a class="dropdown-item" href="../student/studentLandingPage.aspx">Student</a> 
+                            </div>
+                        </li>
+
+                          <li class="nav-item  dropdown">
+                            <a class="nav-link  dropdown-toggle" href="#" id="Login" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Admin Login</a>
+                             <div class="dropdown-menu" aria-labelledby="Login">
+                                 <a class="dropdown-item" href="login.aspx">Residential</a>                                                    
+                                <a class="dropdown-item" href="studentAdminLogin.aspx">Student</a> 
+                             </div>
+                        </li>
+                        
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+   
+    <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+    </asp:ContentPlaceHolder>
+     
+
+
+
+</body>
+</html>
